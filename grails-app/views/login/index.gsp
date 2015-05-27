@@ -39,23 +39,45 @@
           <div class="row">
            <img src="http://localhost:8080/cuccrm/images/avatar.png" id="avatar" >
           </div>
-          <form class="login" action="/cuccrm/login/autenticacion" method="POST">
+          <form class="login" action="autenticacion" method="POST">
               <div class="form-group">
                    <input  type="text" class="form-control"  name="usuario" required  placeholder="Usuario">
               </div>
                <div class="form-group">
                    <div class="input-group">
                      <input  type="password" class="form-control"  name="password" required  placeholder="Contraseña">
-                     <span id="show-hide-passwd" action="hide" class="input-group-addon glyphicon  glyphicon-eye-close"></span>
+                     <span id="show-hide" action="hide" class="input-group-addon glyphicon  glyphicon-eye-close"></span>
                    </div>
               </div>
               <div class="form-group">
                   <button type="submit" class="btn btn-lg btn-primary btn-block"   > Iniciar Sesión</buttom>
                </div>
+               <g:hiddenField name="estado"  value="${estado}"/>
+               <g:hiddenField name="uriAnterior"  value="${uriAnterior}"/>
           </form>
+          <p style="color:#991e1e;">
+              ${flash.message}
+           </p>
         </div>
           <script src="${resource(dir: 'js', file: 'jquery-2.1.4.js')}"></script>		
 	  <script src="${resource(dir: 'js/AdminTemplate/js', file: 'bootstrap.min.js')}"></script>
-          <script src="${resource(dir: 'js/AdminTemplate/js', file: 'scripts.js')}"></script>              
+          <script src="${resource(dir: 'js/AdminTemplate/js', file: 'scripts.js')}"></script> 
+          <script>
+           $(document).on('ready', function(){
+             $('#show-hide').on('click', function(e){
+                e.preventDefault();
+                var actual=$(this).attr('action');
+                if (actual=='hide') {
+                  $(this).prev().attr('type','text');
+                  $(this).removeClass('glyphicon-eye-open').addClass('glyphicon-eye-close').attr('action',"show");
+                }
+                if (actual=='show') {
+                  $(this).prev().attr('type','password');
+                  $(this).removeClass('glyphicon-eye-close').addClass('glyphicon-eye-open').attr('action',"hide");
+                }
+             })  
+             })                     
+           
+          </script>
     </body>
 </html>

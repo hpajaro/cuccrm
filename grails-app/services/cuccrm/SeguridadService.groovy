@@ -1,7 +1,7 @@
 package cuccrm
 
 class SeguridadService {     
-  def excepciones = [ ]
+  def excepciones = []
     def menuPorUsuario(long idUsuario) {
         def opciones = Opcion.executeQuery(""" 
             select o from Opcion as o 
@@ -26,7 +26,7 @@ class SeguridadService {
             and o.eliminado = 0
             order by orden
         """) 
-
+        println opciones
         return opciones
     }
     

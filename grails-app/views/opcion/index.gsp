@@ -24,15 +24,15 @@
 			<thead>
 					<tr>
 					
-						<g:sortableColumn property="idPadre" title="${message(code: 'opcion.idPadre.label', default: 'Id Padre')}" />
+						<g:sortableColumn property="nombreOpcion" title="${message(code: 'opcion.nombreOpcion.label', default: 'Nombre Opcion')}" />
+                                                
+                                               <g:sortableColumn property="idPadre" title="${message(code: 'opcion.idPadre.label', default: 'Id Padre')}" />
 					
 						<g:sortableColumn property="orden" title="${message(code: 'opcion.orden.label', default: 'Orden')}" />
 					
 						<g:sortableColumn property="idTipoOpcion" title="${message(code: 'opcion.idTipoOpcion.label', default: 'Id Tipo Opcion')}" />
 					
-						<g:sortableColumn property="nombreOpcion" title="${message(code: 'opcion.nombreOpcion.label', default: 'Nombre Opcion')}" />
-					
-						<g:sortableColumn property="descOpcion" title="${message(code: 'opcion.descOpcion.label', default: 'Desc Opcion')}" />
+		   			        <g:sortableColumn property="descOpcion" title="${message(code: 'opcion.descOpcion.label', default: 'Desc Opcion')}" />
 					
 						<g:sortableColumn property="controlador" title="${message(code: 'opcion.controlador.label', default: 'Controlador')}" />
 					
@@ -42,17 +42,18 @@
 				<g:each in="${opcionInstanceList}" status="i" var="opcionInstance">
 					<tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
 					
-						<td><g:link action="show" id="${opcionInstance.id}">${fieldValue(bean: opcionInstance, field: "idPadre")}</g:link></td>
+						
+                                            <td><g:link action="show" id="${opcionInstance.id}">${fieldValue(bean: opcionInstance, field: "nombreOpcion")}</g:link></td>
+                                            
+                                            <td>${fieldValue(bean: opcionInstance, field: "idPadre")}</td>
 					
-						<td>${fieldValue(bean: opcionInstance, field: "orden")}</td>
+					    <td>${fieldValue(bean: opcionInstance, field: "orden")}</td>
 					
-						<td>${fieldValue(bean: opcionInstance, field: "idTipoOpcion")}</td>
+					    <td>${fieldValue(bean: opcionInstance, field: "idTipoOpcion")}</td>						
 					
-						<td>${fieldValue(bean: opcionInstance, field: "nombreOpcion")}</td>
+					    <td>${fieldValue(bean: opcionInstance, field: "descOpcion")}</td>
 					
-						<td>${fieldValue(bean: opcionInstance, field: "descOpcion")}</td>
-					
-						<td>${fieldValue(bean: opcionInstance, field: "controlador")}</td>
+					    <td>${fieldValue(bean: opcionInstance, field: "controlador")}</td>
 					
 					</tr>
 				</g:each>
