@@ -1,52 +1,64 @@
 <%@ page import="cuccrm.ValorParametro" %>
-
-
-
+<div id="detContent">
 <div class="fieldcontain ${hasErrors(bean: valorParametroInstance, field: 'valor', 'error')} ">
-	<label for="valor">
+<div class="form-group">	
+    <label class="control-label col-sm-3" for="valor">
 		<g:message code="valorParametro.valor.label" default="Valor" />
 		
 	</label>
-	<g:textField name="valor" value="${valorParametroInstance?.valor}"/>
+         <div class="col-sm-8">
+	<g:textField class="form-control" name="valor" value="${valorParametroInstance?.valor}" disabled="${xronly}" />
+        </div>
+</div>
 </div>
 
 <div class="fieldcontain ${hasErrors(bean: valorParametroInstance, field: 'orden', 'error')} ">
-	<label for="orden">
+<div class="form-group">
+    <label class="control-label col-sm-3" for="orden">
 		<g:message code="valorParametro.orden.label" default="Orden" />
 		
 	</label>
-	<g:textField name="orden" value="${valorParametroInstance?.orden}"/>
+         <div class="col-sm-8">
+	<g:textField class="form-control" name="orden" value="${valorParametroInstance?.orden}" disabled="${xronly}" />
+        </div>
+</div>
 </div>
 
 <div class="fieldcontain ${hasErrors(bean: valorParametroInstance, field: 'descValParametro', 'error')} ">
-	<label for="descValParametro">
+<div class="form-group">
+    <label  class="control-label col-sm-3" for="descValParametro">
 		<g:message code="valorParametro.descValParametro.label" default="Desc Val Parametro" />
 		
 	</label>
-	<g:textField name="descValParametro" maxlength="100" value="${valorParametroInstance?.descValParametro}"/>
+         <div class="col-sm-8">
+	<g:textField class="form-control" name="descValParametro" maxlength="100" value="${valorParametroInstance?.descValParametro}" disabled="${xronly}" />
+         </div>
+</div>  
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: valorParametroInstance, field: 'estadoValorParametro', 'error')} ">
-	<label for="estadoValorParametro">
+<div class="fieldcontain ${hasErrors(bean: valorParametroInstance, field: 'estadoValorParametro', 'error')}  ">
+<div class="form-group">
+    <label class="control-label col-sm-3" for="estadoValorParametro">
 		<g:message code="valorParametro.estadoValorParametro.label" default="Estado Valor Parametro" />
 		
 	</label>
-	<g:select name="estadoValorParametro" from="${valorParametroInstance.constraints.estadoValorParametro.inList}" value="${valorParametroInstance?.estadoValorParametro}" valueMessagePrefix="valorParametro.estadoValorParametro" noSelection="['': '']"/>
+         <div class="col-sm-8">
+	<g:select  name="estadoValorParametro" from="${valorParametroInstance.constraints.estadoValorParametro.inList}"
+                 value="${valorParametroInstance?.estadoValorParametro}"
+                 valueMessagePrefix="valorParametro.estadoValorParametro"
+                 noSelection="['': '']"
+                 disabled="${xronly}"
+                 />
+         </div>
+</div>  
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: valorParametroInstance, field: 'eliminado', 'error')} required">
-	<label for="eliminado">
-		<g:message code="valorParametro.eliminado.label" default="Eliminado" />
-		<span class="required-indicator">*</span>
-	</label>
-	<g:field name="eliminado" type="number" value="${valorParametroInstance.eliminado}" required=""/>
-</div>
+ <g:hiddenField  id ="eliminado" name="eliminado" value="${parametroInstance?.eliminado?:0}" />
+ </div> 
+ <script>                    
+                    <!-- calcudebugger;la el alto del bloque htm del detalle de encaberzado respectivo --> 
+     
+                  
+                    if (parent.IFRAME_DETALLE !=null)parent.IFRAME_DETALLE.height=500;
 
-<div class="fieldcontain ${hasErrors(bean: valorParametroInstance, field: 'parametro', 'error')} required">
-	<label for="parametro">
-		<g:message code="valorParametro.parametro.label" default="Parametro" />
-		<span class="required-indicator">*</span>
-	</label>
-	<g:select id="parametro" name="parametro.id" from="${cuccrm.Parametro.list()}" optionKey="id" required="" value="${valorParametroInstance?.parametro?.id}" class="many-to-one"/>
-</div>
-
+ </script>

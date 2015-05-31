@@ -30,12 +30,12 @@
         <div class="navbar-collapse collapse">
             <ul class="nav navbar-nav navbar-right">
                 <li class="dropdown">
-                    <a class="dropdown-toggle" role="button" data-toggle="dropdown" href="#"><i class="glyphicon glyphicon-user"></i> Admin <span class="caret"></span></a>
+                    <a class="dropdown-toggle" role="button" data-toggle="dropdown" href="#"><i class="glyphicon glyphicon-user"></i> ${session["nombre"]} <span class="caret"></span></a>
                     <ul id="g-account-menu" class="dropdown-menu" role="menu">
                         <li><a href="#">My Profile</a></li>
                     </ul>
                 </li>
-                <li><a href="#"><i class="glyphicon glyphicon-lock"></i> Logout</a></li>
+                <li><a href="/cuccrm/Login/cerrarSesion"><i class="glyphicon glyphicon-lock"></i> Cerrar Sesión</a></li>
             </ul>
         </div>
     </div>
@@ -51,42 +51,34 @@
             <a href="#"><strong><i class="glyphicon glyphicon-wrench"></i> Tools</strong></a>
 
             <hr>
-
+            <a style=" margin-left:15px" href="/cuccrm/Panel"><i class="glyphicon glyphicon-home"></i> Inicio</a>
             <ul class="nav nav-stacked">
-                <li class="nav-header"> <a href="#" data-toggle="collapse" data-target="#userMenu">Settings <i class="glyphicon glyphicon-chevron-down"></i></a>
-                    <ul class="nav nav-stacked collapse in" id="userMenu">
-                        <li class="active"> <a href="#"><i class="glyphicon glyphicon-home"></i> Home</a></li>
-                        <li><a href="#"><i class="glyphicon glyphicon-envelope"></i> Messages <span class="badge badge-info">4</span></a></li>
-                        <li><a href="#"><i class="glyphicon glyphicon-cog"></i> Options</a></li>
-                        <li><a href="#"><i class="glyphicon glyphicon-comment"></i> Shoutbox</a></li>
-                        <li><a href="#"><i class="glyphicon glyphicon-user"></i> Staff List</a></li>
-                        <li><a href="#"><i class="glyphicon glyphicon-flag"></i> Transactions</a></li>
-                        <li><a href="#"><i class="glyphicon glyphicon-exclamation-sign"></i> Rules</a></li>
-                        <li><a href="#"><i class="glyphicon glyphicon-off"></i> Logout</a></li>
+                <li class="nav-header"> <a href="#" data-toggle="collapse" data-target="#userMenu">Operación <i class="glyphicon glyphicon-chevron-right"></i></a>
+                    <ul class="nav nav-stacked collapse " id="userMenu">
+                        <li class="active"></li>
+                        <li><a href="#"><i class="glyphicon glyphicon-briefcase"></i> Productos </a></li>
+                        <li><a href="#"><i class="glyphicon glyphicon-cog"></i> Facturas</a></li>
+                 
                     </ul>
                 </li>
-                <li class="nav-header"> <a href="#" data-toggle="collapse" data-target="#menu2"> Reports <i class="glyphicon glyphicon-chevron-right"></i></a>
+                <li class="nav-header"> <a href="#" data-toggle="collapse" data-target="#menu2"> Admintración <i class="glyphicon glyphicon-chevron-right"></i></a>
 
                     <ul class="nav nav-stacked collapse" id="menu2">
-                        <li><a href="#">Information &amp; Stats</a>
+                        <li> <a href="/cuccrm/Usuario"><i class="glyphicon glyphicon-option-horizontal"></i> Usuarios</a>
                         </li>
-                        <li><a href="#">Views</a>
+                        <li><a href="/cuccrm/Rol"><i class="glyphicon glyphicon-option-horizontal"></i> Roles</a>
                         </li>
-                        <li><a href="#">Requests</a>
+                        <li><a href="/cuccrm/Opcion"><i class="glyphicon glyphicon-option-horizontal"></i> Opciones</a>
                         </li>
-                        <li><a href="#">Timetable</a>
+                        <li><a href="/cuccrm/Operacion"><i class="glyphicon glyphicon-option-horizontal"></i> Operaciones</a>
                         </li>
-                        <li><a href="#">Alerts</a>
+                        <li><a href="/cuccrm/RolUsuario"><i class="glyphicon glyphicon-option-horizontal"></i> Roles/Usuarios</a>
+                        </li>
+                        <li><a href="/cuccrm/Parametro" ><i class="glyphicon glyphicon-option-horizontal"></i> Parámetros</a>
                         </li>
                     </ul>
                 </li>
-                <li class="nav-header">
-                    <a href="#" data-toggle="collapse" data-target="#menu3"> Social Media <i class="glyphicon glyphicon-chevron-right"></i></a>
-                    <ul class="nav nav-stacked collapse" id="menu3">
-                        <li><a href=""><i class="glyphicon glyphicon-circle"></i> Facebook</a></li>
-                        <li><a href=""><i class="glyphicon glyphicon-circle"></i> Twitter</a></li>
-                    </ul>
-                </li>
+           
             </ul>
 
        
@@ -155,6 +147,7 @@
 	<!-- script references -->
                <script src="${resource(dir: 'js', file: 'jquery-2.1.4.js')}"></script>		
 	       <script src="${resource(dir: 'js/AdminTemplate/js', file: 'bootstrap.min.js')}"></script>
-               <script src="${resource(dir: 'js/AdminTemplate/js', file: 'scripts.js')}"></script>              
+               <script src="${resource(dir: 'js/AdminTemplate/js', file: 'scripts.js')}"></script> 
+               <script src="${resource(dir: 'js', file: 'bootbox.min.js')}"></script>
 	</body>
 </html>

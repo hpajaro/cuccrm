@@ -5,7 +5,7 @@ abstract class BaseController {
     def seguridadService
     def grailsApplication
     private auth() {
-       
+       println "aja y que"
         if (!session["id_session"]) {
             if (actionUri == "/panel/index"){
                 redirect(controller:"Login",action:"index",params:[estado:1])

@@ -2,21 +2,14 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<meta name="layout" content="main">
+		<meta name="layout" content="mainb">
 		<g:set var="entityName" value="${message(code: 'parametro.label', default: 'Parametro')}" />
 		<title><g:message code="default.edit.label" args="[entityName]" /></title>
 	</head>
 	<body>
-		<a href="#edit-parametro" class="skip" tabindex="-1"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
-		<div class="nav" role="navigation">
-			<ul>
-				<li><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></li>
-				<li><g:link class="list" action="index"><g:message code="default.list.label" args="[entityName]" /></g:link></li>
-				<li><g:link class="create" action="create"><g:message code="default.new.label" args="[entityName]" /></g:link></li>
-			</ul>
-		</div>
+		
 		<div id="edit-parametro" class="content scaffold-edit" role="main">
-			<h1><g:message code="default.edit.label" args="[entityName]" /></h1>
+			<h2>Edición de Parametros</h2>
 			<g:if test="${flash.message}">
 			<div class="message" role="status">${flash.message}</div>
 			</g:if>
@@ -27,14 +20,17 @@
 				</g:eachError>
 			</ul>
 			</g:hasErrors>
-			<g:form url="[resource:parametroInstance, action:'update']" method="PUT" >
-				<g:hiddenField name="version" value="${parametroInstance?.version}" />
+                        
+			<g:form class="form-horizontal" url="[resource:parametroInstance, action:'update']" method="PUT" >
+				<g:actionSubmit class="btn btn-sm btn-primary" action="update" value="${message(code: 'default.button.update.label', default: 'Update')}" />
+                        
+                                <button type="reset" class="btn btn-sm" style="margin-left:3px;" onclick="history.go(-1)"><i class="icon-remove"></i>&nbsp;Regresar</button>
+                                 <hr style="margin-top:3px"> 
 				<fieldset class="form">
+                                      <g:set var="xronly" value="false" scope="request"/>
 					<g:render template="form"/>
 				</fieldset>
-				<fieldset class="buttons">
-					<g:actionSubmit class="save" action="update" value="${message(code: 'default.button.update.label', default: 'Update')}" />
-				</fieldset>
+				
 			</g:form>
 		</div>
 	</body>

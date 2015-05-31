@@ -46,7 +46,7 @@
                <div class="form-group">
                    <div class="input-group">
                      <input  type="password" class="form-control"  name="password" required  placeholder="Contraseña">
-                     <span id="show-hide" action="hide" class="input-group-addon glyphicon  glyphicon-eye-close"></span>
+                     <span id="botoncito" action="hide" class="input-group-addon glyphicon  glyphicon-eye-close"></span>
                    </div>
               </div>
               <div class="form-group">
@@ -55,7 +55,7 @@
                <g:hiddenField name="estado"  value="${estado}"/>
                <g:hiddenField name="uriAnterior"  value="${uriAnterior}"/>
           </form>
-          <p style="color:#991e1e;">
+          <p style="color:#ff0000;">
               ${flash.message}
            </p>
         </div>
@@ -64,7 +64,7 @@
           <script src="${resource(dir: 'js/AdminTemplate/js', file: 'scripts.js')}"></script> 
           <script>
            $(document).on('ready', function(){
-             $('#show-hide').on('click', function(e){
+             $('#botoncito').on('click', function(e){
                 e.preventDefault();
                 var actual=$(this).attr('action');
                 if (actual=='hide') {

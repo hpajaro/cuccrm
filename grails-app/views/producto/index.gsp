@@ -28,13 +28,13 @@
 					
 						<g:sortableColumn property="nombreProducto" title="${message(code: 'producto.nombreProducto.label', default: 'Nombre Producto')}" />
 					
-						<g:sortableColumn property="idTipoProducto" title="${message(code: 'producto.idTipoProducto.label', default: ' Tipo ')}" />
+						<g:sortableColumn property="idTipoProducto" title="${message(code: 'producto.idTipoProducto.label', default: 'Id Tipo Producto')}" />
 					
-						<g:sortableColumn property="idCategoriaProducto" title="${message(code: 'producto.idCategoriaProducto.label', default: 'Categoria')}" />
+						<g:sortableColumn property="idCategoriaProducto" title="${message(code: 'producto.idCategoriaProducto.label', default: 'Id Categoria Producto')}" />
 					
-						<g:sortableColumn property="idEstadoProducto" title="${message(code: 'producto.idEstadoProducto.label', default: 'Estado')}" />
+						<g:sortableColumn property="idEstadoProducto" title="${message(code: 'producto.idEstadoProducto.label', default: 'Id Estado Producto')}" />
 					
-						<!--<th><g:message code="producto.detfactura.label" default="Detfactura" /></th>-->
+						<g:sortableColumn property="eliminado" title="${message(code: 'producto.eliminado.label', default: 'Eliminado')}" />
 					
 					</tr>
 				</thead>
@@ -50,7 +50,9 @@
 					
 						<td>${fieldValue(bean: productoInstance, field: "idCategoriaProducto")}</td>
 					
-						<td>${fieldValue(bean: productoInstance, field: "idEstadoProducto")}</td>					
+						<td>${fieldValue(bean: productoInstance, field: "idEstadoProducto")}</td>
+					
+						<td>${fieldValue(bean: productoInstance, field: "eliminado")}</td>
 					
 					</tr>
 				</g:each>

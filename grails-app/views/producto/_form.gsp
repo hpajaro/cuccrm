@@ -42,7 +42,22 @@
 	<g:field name="idEstadoProducto" type="number" value="${productoInstance.idEstadoProducto}"/>
 </div>
 
+<div class="fieldcontain ${hasErrors(bean: productoInstance, field: 'detfactura', 'error')} ">
+	<label for="detfactura">
+		<g:message code="producto.detfactura.label" default="Detfactura" />
+		
+	</label>
+	
+<ul class="one-to-many">
+<g:each in="${productoInstance?.detfactura?}" var="d">
+    <li><g:link controller="detFactura" action="show" id="${d.id}">${d?.encodeAsHTML()}</g:link></li>
+</g:each>
+<li class="add">
+<g:link controller="detFactura" action="create" params="['producto.id': productoInstance?.id]">${message(code: 'default.add.label', args: [message(code: 'detFactura.label', default: 'DetFactura')])}</g:link>
+</li>
+</ul>
 
+</div>
 
 <div class="fieldcontain ${hasErrors(bean: productoInstance, field: 'eliminado', 'error')} required">
 	<label for="eliminado">

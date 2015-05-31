@@ -72,7 +72,9 @@
 				<li class="fieldcontain">
 					<span id="detfactura-label" class="property-label"><g:message code="producto.detfactura.label" default="Detfactura" /></span>
 					
-						<span class="property-value" aria-labelledby="detfactura-label"><g:link controller="detFactura" action="show" id="${productoInstance?.detfactura?.id}">${productoInstance?.detfactura?.encodeAsHTML()}</g:link></span>
+						<g:each in="${productoInstance.detfactura}" var="d">
+						<span class="property-value" aria-labelledby="detfactura-label"><g:link controller="detFactura" action="show" id="${d.id}">${d?.encodeAsHTML()}</g:link></span>
+						</g:each>
 					
 				</li>
 				</g:if>

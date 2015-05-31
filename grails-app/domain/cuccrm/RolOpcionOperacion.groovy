@@ -17,4 +17,5 @@ class RolOpcionOperacion {
         estadoRolOpcionOperacion inList:['A','I']    
         
     }
+  
 }

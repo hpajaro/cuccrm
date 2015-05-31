@@ -4,7 +4,7 @@ import static org.springframework.http.HttpStatus.*
 import grails.transaction.Transactional
 
 @Transactional(readOnly = true)
-class ParametroController extends BaseController {
+class ParametroController  extends BaseController{
 
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
@@ -74,12 +74,9 @@ class ParametroController extends BaseController {
     @Transactional
     def delete(Parametro parametroInstance) {
 
-        if (parametroInstance == null) {
-            notFound()
-            return
-        }
+         parametroInstance=Parametro.get(params.id)
 
-        parametroInstance.delete flush:true
+         parametroInstance.delete flush:true
 
         request.withFormat {
             form {

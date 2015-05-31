@@ -2,21 +2,18 @@
 <%@ page import="cuccrm.ValorParametro" %>
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta name="layout" content="mainb">
+	<head>   
+		<meta name="layout" content="mainc">
 		<g:set var="entityName" value="${message(code: 'valorParametro.label', default: 'ValorParametro')}" />
 		<title><g:message code="default.list.label" args="[entityName]" /></title>
 	</head>
 	<body>
-		<a href="#list-valorParametro" class="skip" tabindex="-1"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
-		<div class="nav" role="navigation">
-			<ul>
-				<li><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></li>
-				<li><g:link class="create" action="create"><g:message code="default.new.label" args="[entityName]" /></g:link></li>
-			</ul>
-		</div>
+		<div id="detalleconten">
 		<div id="list-valorParametro" class="content scaffold-list" role="main">
-			<h1><g:message code="default.list.label" args="[entityName]" /></h1>
+			<h2>Lista Valor Parametros</h2>
+                         <g:set var="xcontroler" value="ValorParametro" scope="request"/>
+                         <g:set var="xid" value="${params.id}" scope="request"/>
+                         <g:render template="/general/botonesIndex"/>
 			<g:if test="${flash.message}">
 				<div class="message" role="status">${flash.message}</div>
 			</g:if>
@@ -42,7 +39,7 @@
 				<g:each in="${valorParametroInstanceList}" status="i" var="valorParametroInstance">
 					<tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
 					
-						<td><g:link action="show" id="${valorParametroInstance.id}">${fieldValue(bean: valorParametroInstance, field: "valor")}</g:link></td>
+						<td><g:link action="show" id="${valorParametroInstance.id}" params='[xid:"${params.id}"]'>${fieldValue(bean: valorParametroInstance, field: "valor")}</g:link></td>
 					
 						<td>${fieldValue(bean: valorParametroInstance, field: "orden")}</td>
 					
@@ -62,5 +59,16 @@
 				<g:paginate total="${valorParametroInstanceCount ?: 0}" />
 			</div>
 		</div>
+                </div>
+                 <script>                    
+                    <!-- calcudebugger;la el alto del bloque htm del detalle de encaberzado respectivo --> 
+                   
+                   var contenido= document.getElementById("detalleconten"); 
+                    if(contenido.offsetHeight)          {var altura=contenido.offsetHeight;}
+                    else if(contenido.style.pixelHeight){var altura=contenido.style.pixelHeight;}
+                  
+                    if (parent.IFRAME_DETALLE !=null)parent.IFRAME_DETALLE.height=altura+50;
+
+               </script>
 	</body>
 </html>

@@ -2,19 +2,13 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<meta name="layout" content="main">
+		<meta name="layout" content="mainc">
 		<g:set var="entityName" value="${message(code: 'valorParametro.label', default: 'ValorParametro')}" />
 		<title><g:message code="default.edit.label" args="[entityName]" /></title>
 	</head>
 	<body>
-		<a href="#edit-valorParametro" class="skip" tabindex="-1"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
-		<div class="nav" role="navigation">
-			<ul>
-				<li><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></li>
-				<li><g:link class="list" action="index"><g:message code="default.list.label" args="[entityName]" /></g:link></li>
-				<li><g:link class="create" action="create"><g:message code="default.new.label" args="[entityName]" /></g:link></li>
-			</ul>
-		</div>
+		
+            
 		<div id="edit-valorParametro" class="content scaffold-edit" role="main">
 			<h1><g:message code="default.edit.label" args="[entityName]" /></h1>
 			<g:if test="${flash.message}">
@@ -27,14 +21,19 @@
 				</g:eachError>
 			</ul>
 			</g:hasErrors>
+                        
 			<g:form url="[resource:valorParametroInstance, action:'update']" method="PUT" >
-				<g:hiddenField name="version" value="${valorParametroInstance?.version}" />
+					<g:actionSubmit class="btn btn-sm btn-primary" action="update" 
+                                                        value="${message(code: 'default.button.update.label',
+                                                        default: 'Update')}" />
+                                 <button type="reset" class="btn btn-sm" style="margin-left:3px;" onclick="history.go(-1)"><i class="icon-remove"></i>&nbsp;Regresar</button>
+                                 <hr style="margin-top:3px">  
+
 				<fieldset class="form">
+                                      <g:set var="xronly" value="false" scope="request"/>
 					<g:render template="form"/>
 				</fieldset>
-				<fieldset class="buttons">
-					<g:actionSubmit class="save" action="update" value="${message(code: 'default.button.update.label', default: 'Update')}" />
-				</fieldset>
+				
 			</g:form>
 		</div>
 	</body>

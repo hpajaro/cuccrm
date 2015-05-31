@@ -1,8 +1,8 @@
 package cuccrm
 
-class PanelController {
+class PanelController  extends BaseController{
 
     def index() { 
-     
+     render view:"index"
     }
 }

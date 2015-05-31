@@ -18,7 +18,7 @@ class LoginController {
         
         def password=params.password.encodeAsMD5()
         println password
-        
+          //GORM=Hibernate
          def query = Usuario.where {
             usuario == params.usuario.toString()
             contrasena == password

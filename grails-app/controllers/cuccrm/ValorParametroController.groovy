@@ -8,11 +8,12 @@ import grails.transaction.Transactional
 @Transactional(readOnly = true)
 class ValorParametroController {
 
-    static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
+    static allowedMethods = [save: "POST", update: "PUT"]
 
     def index(Integer max) {
         params.max = Math.min(max ?: 10, 100)
-        respond ValorParametro.list(params), model:[valorParametroInstanceCount: ValorParametro.count()]
+        def lista=ValorParametro.findAll("from ValorParametro as v where v.parametro.id=${params.id}")
+        respond lista, model:[valorParametroInstanceCount: ValorParametro.count()]
     }
 
     def show(ValorParametro valorParametroInstance) {
@@ -29,13 +30,19 @@ class ValorParametroController {
             notFound()
             return
         }
-
+        println "xid="+params.xid
+        if (params.xid){                    
+            valorParametroInstance.parametro=Parametro.get(params.xid)
+       }
+        
+        valorParametroInstance.validate()
+        
         if (valorParametroInstance.hasErrors()) {
             respond valorParametroInstance.errors, view:'create'
             return
         }
 
-        valorParametroInstance.save flush:true
+        valorParametroInstance.save flush:true,failOnError:true
 
         request.withFormat {
             form {
@@ -75,18 +82,15 @@ class ValorParametroController {
 
     @Transactional
     def delete(ValorParametro valorParametroInstance) {
-
-        if (valorParametroInstance == null) {
-            notFound()
-            return
-        }
-
+        println "id="+params.id
+        valorParametroInstance=ValorParametro.get(params.id)
+        def idPadre= valorParametroInstance.parametro.id
         valorParametroInstance.delete flush:true
-
+        
         request.withFormat {
             form {
                 flash.message = message(code: 'default.deleted.message', args: [message(code: 'ValorParametro.label', default: 'ValorParametro'), valorParametroInstance.id])
-                redirect action:"index", method:"GET"
+                redirect url:"/ValorParametro/index/"+idPadre
             }
             '*'{ render status: NO_CONTENT }
         }
